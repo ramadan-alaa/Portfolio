@@ -221,8 +221,10 @@ const Hero = () => {
                 />
               </button>
               <a
-                href="/resume.pdf"
-                className="btn-outline flex items-center gap-2"
+                href="/Ramadan_CV.pdf"
+                download
+                aria-label="Download CV"
+                className="btn-outline inline-flex items-center gap-2"
               >
                 <Download size={18} />
                 Download CV
