@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, Download } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight, Download } from "lucide-react";
 
 const Hero = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -14,7 +14,7 @@ const Hero = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const resizeCanvas = () => {
@@ -22,7 +22,7 @@ const Hero = () => {
       canvas.height = window.innerHeight;
     };
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
 
     interface Particle {
       x: number;
@@ -44,7 +44,7 @@ const Hero = () => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     };
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
@@ -87,7 +87,7 @@ const Hero = () => {
         // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(135, 81, 255, 0.6)';
+        ctx.fillStyle = "rgba(135, 81, 255, 0.6)";
         ctx.fill();
 
         // Draw connections
@@ -114,8 +114,8 @@ const Hero = () => {
     animate();
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationId);
     };
   }, []);
@@ -123,17 +123,20 @@ const Hero = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center overflow-hidden"
+    >
       {/* Particle Canvas */}
       <canvas
         ref={canvasRef}
         className={`absolute inset-0 z-0 transition-opacity duration-1000 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
+          isVisible ? "opacity-100" : "opacity-0"
         }`}
       />
 
@@ -141,15 +144,15 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div
           className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full opacity-30 blur-[100px] animate-float-slow"
-          style={{ background: 'linear-gradient(135deg, #8751ff, #b3a0ff)' }}
+          style={{ background: "linear-gradient(135deg, #8751ff, #b3a0ff)" }}
         />
         <div
           className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full opacity-20 blur-[80px] animate-float"
-          style={{ background: 'linear-gradient(135deg, #b3a0ff, #ff6b6b)' }}
+          style={{ background: "linear-gradient(135deg, #b3a0ff, #ff6b6b)" }}
         />
         <div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-10 blur-[120px] animate-float-slow"
-          style={{ background: '#8751ff' }}
+          style={{ background: "#8751ff" }}
         />
       </div>
 
@@ -163,24 +166,27 @@ const Hero = () => {
               <h1
                 className={`text-6xl sm:text-7xl lg:text-8xl xl:text-[120px] font-display font-bold text-white leading-none transition-all duration-1000 ${
                   isVisible
-                    ? 'translate-y-0 opacity-100'
-                    : 'translate-y-full opacity-0'
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-full opacity-0"
                 }`}
-                style={{ transitionDelay: '300ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+                style={{
+                  transitionDelay: "300ms",
+                  transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+                }}
               >
-                Creative
+                My
               </h1>
             </div>
             <div className="overflow-hidden mb-8">
               <h1
                 className={`text-6xl sm:text-7xl lg:text-8xl xl:text-[120px] font-display font-bold leading-none transition-all duration-1000 ${
                   isVisible
-                    ? 'translate-y-0 opacity-100'
-                    : 'translate-y-full opacity-0'
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-full opacity-0"
                 }`}
                 style={{
-                  transitionDelay: '500ms',
-                  transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                  transitionDelay: "500ms",
+                  transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
               >
                 <span className="gradient-text">Portfolio</span>
@@ -191,27 +197,34 @@ const Hero = () => {
             <p
               className={`text-lg text-white/70 max-w-lg mb-10 transition-all duration-800 ${
                 isVisible
-                  ? 'translate-y-0 opacity-100 blur-0'
-                  : 'translate-y-8 opacity-0 blur-sm'
+                  ? "translate-y-0 opacity-100 blur-0"
+                  : "translate-y-8 opacity-0 blur-sm"
               }`}
-              style={{ transitionDelay: '800ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+              style={{
+                transitionDelay: "800ms",
+                transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
             >
-              A passionate Frontend Developer crafting beautiful, responsive, and
-              user-friendly web experiences. Specializing in React, TypeScript, and
-              modern CSS frameworks.
+              Frontend Developer dedicated to building high-quality, scalable
+              web applications with modern technologies, clean code practices,
+              and exceptional user experience.
             </p>
 
             {/* CTA Buttons */}
             <div
               className={`flex flex-wrap gap-4 transition-all duration-600 ${
                 isVisible
-                  ? 'translate-y-0 opacity-100 scale-100'
-                  : 'translate-y-8 opacity-0 scale-90'
+                  ? "translate-y-0 opacity-100 scale-100"
+                  : "translate-y-8 opacity-0 scale-90"
               }`}
-              style={{ transitionDelay: '1000ms', transitionTimingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' }}
+              style={{
+                transitionDelay: "1000ms",
+                transitionTimingFunction:
+                  "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+              }}
             >
               <button
-                onClick={() => scrollToSection('#projects')}
+                onClick={() => scrollToSection("#projects")}
                 className="btn-primary flex items-center gap-2 group"
               >
                 View My Work
@@ -235,10 +248,13 @@ const Hero = () => {
             <div
               className={`flex gap-8 mt-12 transition-all duration-600 ${
                 isVisible
-                  ? 'translate-y-0 opacity-100'
-                  : 'translate-y-8 opacity-0'
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-8 opacity-0"
               }`}
-              style={{ transitionDelay: '1200ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+              style={{
+                transitionDelay: "1200ms",
+                transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
             >
               <div>
                 <div className="text-3xl font-display font-bold text-primary animate-counter-pulse">
@@ -266,16 +282,19 @@ const Hero = () => {
             <div
               className={`relative perspective-1000 transition-all duration-1200 ${
                 isVisible
-                  ? 'translate-x-0 opacity-100 rotate-0'
-                  : 'translate-x-24 opacity-0 rotate-y-25'
+                  ? "translate-x-0 opacity-100 rotate-0"
+                  : "translate-x-24 opacity-0 rotate-y-25"
               }`}
-              style={{ transitionDelay: '600ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+              style={{
+                transitionDelay: "600ms",
+                transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
             >
               {/* Image Container */}
               <div className="relative group">
                 {/* Glow Effect */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-primary to-secondary opacity-30 rounded-3xl blur-2xl group-hover:opacity-50 transition-opacity duration-500" />
-                
+
                 {/* Image */}
                 <div className="relative w-[300px] h-[400px] sm:w-[350px] sm:h-[467px] lg:w-[400px] lg:h-[533px] rounded-3xl overflow-hidden animate-float-slow">
                   <img
@@ -283,7 +302,7 @@ const Hero = () => {
                     alt="Portrait"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  
+
                   {/* Overlay Gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-dark/50 via-transparent to-transparent" />
                 </div>
@@ -292,15 +311,24 @@ const Hero = () => {
                 <div className="absolute -bottom-4 -left-4 glass px-4 py-3 rounded-2xl animate-float">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 bg-success rounded-full animate-pulse" />
-                    <span className="text-sm font-medium">Available for work</span>
+                    <span className="text-sm font-medium">
+                      Available for work
+                    </span>
                   </div>
                 </div>
 
                 {/* Tech Stack Badge */}
-                <div className="absolute -top-4 -right-4 glass px-4 py-3 rounded-2xl animate-float" style={{ animationDelay: '1s' }}>
+                <div
+                  className="absolute -top-4 -right-4 glass px-4 py-3 rounded-2xl animate-float"
+                  style={{ animationDelay: "1s" }}
+                >
                   <div className="flex gap-2">
-                    <span className="text-xs px-2 py-1 bg-primary/20 rounded-full text-primary">React</span>
-                    <span className="text-xs px-2 py-1 bg-primary/20 rounded-full text-primary">TS</span>
+                    <span className="text-xs px-2 py-1 bg-primary/20 rounded-full text-primary">
+                      React
+                    </span>
+                    <span className="text-xs px-2 py-1 bg-primary/20 rounded-full text-primary">
+                      TS
+                    </span>
                   </div>
                 </div>
               </div>
