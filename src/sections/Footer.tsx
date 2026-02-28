@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import {
   Linkedin,
   Github,
-  Twitter,
   Instagram,
   Heart,
   ArrowUp,
@@ -50,10 +49,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/ramadan-alaa/", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/ramadan-alaa", label: "GitHub" },
+    { icon: Instagram, href: "https://www.instagram.com/gby_staa/", label: "Instagram" },
   ];
 
   const scrollToSection = (href: string) => {
