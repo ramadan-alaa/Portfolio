@@ -6,7 +6,6 @@ import {
   Phone,
   Linkedin,
   Github,
-  Twitter,
   Instagram,
 } from "lucide-react";
 import { toast } from "sonner";
@@ -136,10 +135,9 @@ const Contact = () => {
   };
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/ramadan-alaa/", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/ramadan-alaa", label: "GitHub" },
+    { icon: Instagram, href: "https://www.instagram.com/gby_staa/", label: "Instagram" },
   ];
 
   const contactInfo = [
