@@ -1,11 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  Linkedin,
-  Github,
-  Instagram,
-  Heart,
-  ArrowUp,
-} from "lucide-react";
+import { Linkedin, Github, Instagram, ArrowUp } from "lucide-react";
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
@@ -49,9 +43,17 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "https://www.linkedin.com/in/ramadan-alaa/", label: "LinkedIn" },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/ramadan-alaa/",
+      label: "LinkedIn",
+    },
     { icon: Github, href: "https://github.com/ramadan-alaa", label: "GitHub" },
-    { icon: Instagram, href: "https://www.instagram.com/gby_staa/", label: "Instagram" },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/gby_staa/",
+      label: "Instagram",
+    },
   ];
 
   const scrollToSection = (href: string) => {
@@ -226,9 +228,8 @@ const Footer = () => {
               }`}
               style={{ transitionDelay: "900ms" }}
             >
-              © {new Date().getFullYear()} Portfolio. Made with
-              <Heart className="w-4 h-4 text-accent fill-accent mx-1" />
-              All rights reserved.
+              © {new Date().getFullYear()} Ramadan Portfolio. All rights
+              reserved.
             </div>
 
             {/* Legal Links */}
