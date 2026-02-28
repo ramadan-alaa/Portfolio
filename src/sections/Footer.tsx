@@ -1,5 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
-import { Linkedin, Github, Twitter, Instagram, Heart, ArrowUp } from 'lucide-react';
+import { useEffect, useRef, useState } from "react";
+import {
+  Linkedin,
+  Github,
+  Twitter,
+  Instagram,
+  Heart,
+  ArrowUp,
+} from "lucide-react";
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
@@ -12,7 +19,7 @@ const Footer = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (footerRef.current) {
@@ -23,53 +30,51 @@ const Footer = () => {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Blog", href: "#blog" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const services = [
-    'Web Development',
-    'UI/UX Design',
-    'Responsive Design',
-    'Performance Optimization',
+    "Web Development",
+    "UI/UX Design",
+    "Responsive Design",
+    "Performance Optimization",
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Github, href: "#", label: "GitHub" },
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Instagram, href: "#", label: "Instagram" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <footer
-      ref={footerRef}
-      className="relative pt-20 pb-8 overflow-hidden"
-    >
+    <footer ref={footerRef} className="relative pt-20 pb-8 overflow-hidden">
       {/* Animated Gradient Line */}
       <div
         className={`absolute top-0 left-0 right-0 h-0.5 transition-all duration-1000 ${
-          isVisible ? 'opacity-100' : 'opacity-0'
+          isVisible ? "opacity-100" : "opacity-0"
         }`}
         style={{
-          background: 'linear-gradient(90deg, transparent, #8751ff, #b3a0ff, #8751ff, transparent)',
-          backgroundSize: '200% 100%',
-          animation: 'border-rotate 3s linear infinite',
+          background:
+            "linear-gradient(90deg, transparent, #8751ff, #b3a0ff, #8751ff, transparent)",
+          backgroundSize: "200% 100%",
+          animation: "border-rotate 3s linear infinite",
         }}
       />
 
@@ -79,17 +84,23 @@ const Footer = () => {
           {/* Brand Column */}
           <div
             className={`lg:col-span-1 transition-all duration-500 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
             }`}
-            style={{ transitionDelay: '200ms' }}
+            style={{ transitionDelay: "200ms" }}
           >
-            <a href="#home" className="text-2xl font-display font-bold text-white mb-4 block">
+            <a
+              href="#home"
+              className="text-2xl font-display font-bold text-white mb-4 block"
+            >
               Portfolio
             </a>
             <p className="text-white/60 mb-6">
-              Creating digital experiences that inspire and engage. Let's build something amazing together.
+              Creating digital experiences that inspire and engage. Let's build
+              something amazing together.
             </p>
-            
+
             {/* Social Links */}
             <div className="flex gap-3">
               {socialLinks.map((social, index) => (
@@ -97,7 +108,9 @@ const Footer = () => {
                   key={social.label}
                   href={social.href}
                   className={`w-10 h-10 glass rounded-lg flex items-center justify-center text-white/60 hover:text-primary hover:bg-primary/20 transition-all duration-300 hover:-translate-y-1 ${
-                    isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                    isVisible
+                      ? "translate-y-0 opacity-100"
+                      : "translate-y-4 opacity-0"
                   }`}
                   style={{ transitionDelay: `${400 + index * 80}ms` }}
                   aria-label={social.label}
@@ -111,9 +124,11 @@ const Footer = () => {
           {/* Quick Links */}
           <div
             className={`transition-all duration-500 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
             }`}
-            style={{ transitionDelay: '500ms' }}
+            style={{ transitionDelay: "500ms" }}
           >
             <h4 className="text-white font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-3">
@@ -121,7 +136,9 @@ const Footer = () => {
                 <li
                   key={link.name}
                   className={`transition-all duration-400 ${
-                    isVisible ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "-translate-x-4 opacity-0"
                   }`}
                   style={{ transitionDelay: `${500 + index * 60}ms` }}
                 >
@@ -143,9 +160,11 @@ const Footer = () => {
           {/* Services */}
           <div
             className={`transition-all duration-500 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
             }`}
-            style={{ transitionDelay: '600ms' }}
+            style={{ transitionDelay: "600ms" }}
           >
             <h4 className="text-white font-semibold mb-4">Services</h4>
             <ul className="space-y-3">
@@ -153,7 +172,9 @@ const Footer = () => {
                 <li
                   key={service}
                   className={`transition-all duration-400 ${
-                    isVisible ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0'
+                    isVisible
+                      ? "translate-x-0 opacity-100"
+                      : "-translate-x-4 opacity-0"
                   }`}
                   style={{ transitionDelay: `${600 + index * 60}ms` }}
                 >
@@ -166,23 +187,31 @@ const Footer = () => {
           {/* Contact Info */}
           <div
             className={`transition-all duration-500 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
             }`}
-            style={{ transitionDelay: '700ms' }}
+            style={{ transitionDelay: "700ms" }}
           >
             <h4 className="text-white font-semibold mb-4">Contact</h4>
             <ul className="space-y-3 text-white/60">
               <li>
-                <a href="mailto:hello@portfolio.com" className="hover:text-primary transition-colors">
-                  hello@portfolio.com
+                <a
+                  href="mailto:ramadan.alaa.pro@gmail.com"
+                  className="hover:text-primary transition-colors"
+                >
+                  ramadan.alaa.pro@gmail.com
                 </a>
               </li>
               <li>
-                <a href="tel:+15551234567" className="hover:text-primary transition-colors">
-                  +1 (555) 123-4567
+                <a
+                  href="tel:+15551234567"
+                  className="hover:text-primary transition-colors"
+                >
+                  +20 112 194 4524
                 </a>
               </li>
-              <li>New York, NY</li>
+              <li>Egypt, EG</li>
             </ul>
           </div>
         </div>
@@ -193,9 +222,11 @@ const Footer = () => {
             {/* Copyright */}
             <div
               className={`flex items-center gap-1 text-white/50 text-sm transition-all duration-400 ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-4 opacity-0"
               }`}
-              style={{ transitionDelay: '900ms' }}
+              style={{ transitionDelay: "900ms" }}
             >
               © {new Date().getFullYear()} Portfolio. Made with
               <Heart className="w-4 h-4 text-accent fill-accent mx-1" />
@@ -205,14 +236,22 @@ const Footer = () => {
             {/* Legal Links */}
             <div
               className={`flex gap-6 text-sm transition-all duration-400 ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-4 opacity-0"
               }`}
-              style={{ transitionDelay: '900ms' }}
+              style={{ transitionDelay: "900ms" }}
             >
-              <a href="#" className="text-white/50 hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-white/50 hover:text-primary transition-colors"
+              >
                 Privacy Policy
               </a>
-              <a href="#" className="text-white/50 hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-white/50 hover:text-primary transition-colors"
+              >
                 Terms of Service
               </a>
             </div>
@@ -221,9 +260,11 @@ const Footer = () => {
             <button
               onClick={scrollToTop}
               className={`w-10 h-10 glass rounded-lg flex items-center justify-center text-white/60 hover:text-primary hover:bg-primary/20 transition-all duration-300 hover:-translate-y-1 ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-4 opacity-0"
               }`}
-              style={{ transitionDelay: '1000ms' }}
+              style={{ transitionDelay: "1000ms" }}
               aria-label="Back to top"
             >
               <ArrowUp className="w-4 h-4" />
