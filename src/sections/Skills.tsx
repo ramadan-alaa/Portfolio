@@ -31,21 +31,21 @@ const skillCategories = [
     skills: [
       { name: 'React', icon: Zap, level: 88, color: '#61dafb' },
       { name: 'TypeScript', icon: Code2, level: 85, color: '#3178c6' },
-      { name: 'Tailwind CSS', icon: Layout, level: 93, color: '#06b6d4' },
+      { name: 'Tailwind CSS', icon: Layout, level: 95, color: '#06b6d4' },
     ],
   },
   {
     title: 'Tools & More',
     skills: [
-      { name: 'Sass/SCSS', icon: Palette, level: 87, color: '#cc6699' },
-      { name: 'Bootstrap', icon: Layout, level: 80, color: '#7952b3' },
-      { name: 'Git', icon: GitBranch, level: 82, color: '#f05032' },
+      { name: 'Sass/SCSS', icon: Palette, level: 95, color: '#cc6699' },
+      { name: 'Bootstrap', icon: Layout, level: 92, color: '#7952b3' },
+      { name: 'Git', icon: GitBranch, level: 95, color: '#f05032' },
     ],
   },
   {
     title: 'API & Data',
     skills: [
-      { name: 'REST APIs', icon: Database, level: 85, color: '#4ade80' },
+      { name: 'REST APIs', icon: Database, level: 88, color: '#4ade80' },
       { name: 'Axios', icon: Zap, level: 88, color: '#5a29e4' },
       { name: 'Responsive', icon: Smartphone, level: 95, color: '#8751ff' },
     ],
