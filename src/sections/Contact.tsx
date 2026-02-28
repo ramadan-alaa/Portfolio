@@ -1,15 +1,24 @@
-import { useEffect, useRef, useState } from 'react';
-import { Send, Mail, MapPin, Phone, Linkedin, Github, Twitter, Instagram } from 'lucide-react';
-import { toast } from 'sonner';
+import { useEffect, useRef, useState } from "react";
+import {
+  Send,
+  Mail,
+  MapPin,
+  Phone,
+  Linkedin,
+  Github,
+  Twitter,
+  Instagram,
+} from "lucide-react";
+import { toast } from "sonner";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -20,7 +29,7 @@ const Contact = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     if (sectionRef.current) {
@@ -35,7 +44,7 @@ const Contact = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const resizeCanvas = () => {
@@ -44,7 +53,7 @@ const Contact = () => {
       ctx.scale(2, 2);
     };
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
 
     interface Particle {
       x: number;
@@ -76,12 +85,14 @@ const Contact = () => {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-        if (particle.x < 0 || particle.x > canvas.offsetWidth) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.offsetHeight) particle.vy *= -1;
+        if (particle.x < 0 || particle.x > canvas.offsetWidth)
+          particle.vx *= -1;
+        if (particle.y < 0 || particle.y > canvas.offsetHeight)
+          particle.vy *= -1;
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(135, 81, 255, 0.5)';
+        ctx.fillStyle = "rgba(135, 81, 255, 0.5)";
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -107,7 +118,7 @@ const Contact = () => {
     animate();
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener("resize", resizeCanvas);
       cancelAnimationFrame(animationId);
     };
   }, []);
@@ -115,26 +126,26 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    toast.success('Message sent successfully! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+
+    toast.success("Message sent successfully! I'll get back to you soon.");
+    setFormData({ name: "", email: "", message: "" });
     setIsSubmitting(false);
   };
 
   const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Github, href: "#", label: "GitHub" },
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Instagram, href: "#", label: "Instagram" },
   ];
 
   const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'hello@portfolio.com' },
-    { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567' },
-    { icon: MapPin, label: 'Location', value: 'New York, NY' },
+    { icon: Mail, label: "Email", value: "ramadan.alaa.pro@gmail.com" },
+    { icon: Phone, label: "Phone", value: "+20 112 194 4524" },
+    { icon: MapPin, label: "Location", value: "Egypt, EG" },
   ];
 
   return (
@@ -146,29 +157,28 @@ const Contact = () => {
       {/* CTA Section */}
       <div className="relative mb-24">
         {/* Particle Canvas */}
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full"
-        />
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
 
         {/* Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-primary/10 to-transparent rounded-3xl" />
 
         <div
           className={`relative glass rounded-3xl p-12 lg:p-16 text-center transition-all duration-800 ${
-            isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-12 opacity-0 scale-95'
+            isVisible
+              ? "translate-y-0 opacity-100 scale-100"
+              : "translate-y-12 opacity-0 scale-95"
           }`}
-          style={{ transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+          style={{ transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)" }}
         >
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white mb-6">
             Let's Work <span className="gradient-text">Together</span>
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto mb-8 text-lg">
-            Have a project in mind? Let's create something amazing together.
-            I'm always excited to take on new challenges and bring ideas to life.
+            Have a project in mind? Let's create something amazing together. I'm
+            always excited to take on new challenges and bring ideas to life.
           </p>
           <a
-            href="mailto:hello@portfolio.com"
+            href="mailto:ramadan.alaa.pro@gmail.com"
             className="btn-primary inline-flex items-center gap-2 animate-pulse-glow"
           >
             <Send size={18} />
@@ -183,17 +193,23 @@ const Contact = () => {
           {/* Contact Info */}
           <div
             className={`transition-all duration-700 ${
-              isVisible ? 'translate-x-0 opacity-100' : '-translate-x-12 opacity-0'
+              isVisible
+                ? "translate-x-0 opacity-100"
+                : "-translate-x-12 opacity-0"
             }`}
-            style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+            style={{
+              transitionDelay: "200ms",
+              transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
           >
             <span className="section-label">Get In Touch</span>
             <h3 className="text-3xl sm:text-4xl font-display font-bold text-white mt-4 mb-6">
               Let's Start a <span className="gradient-text">Conversation</span>
             </h3>
             <p className="text-white/70 mb-8">
-              Whether you have a project in mind, want to collaborate, or just want to say hi,
-              I'd love to hear from you. Fill out the form or reach out through any of the channels below.
+              Whether you have a project in mind, want to collaborate, or just
+              want to say hi, I'd love to hear from you. Fill out the form or
+              reach out through any of the channels below.
             </p>
 
             {/* Contact Details */}
@@ -235,20 +251,31 @@ const Contact = () => {
           {/* Contact Form */}
           <div
             className={`transition-all duration-700 ${
-              isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'
+              isVisible
+                ? "translate-x-0 opacity-100"
+                : "translate-x-12 opacity-0"
             }`}
-            style={{ transitionDelay: '400ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+            style={{
+              transitionDelay: "400ms",
+              transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
           >
             <form onSubmit={handleSubmit} className="glass rounded-3xl p-8">
-              <h4 className="text-xl font-semibold text-white mb-6">Send a Message</h4>
-              
+              <h4 className="text-xl font-semibold text-white mb-6">
+                Send a Message
+              </h4>
+
               <div className="space-y-5">
                 <div>
-                  <label className="block text-sm text-white/70 mb-2">Your Name</label>
+                  <label className="block text-sm text-white/70 mb-2">
+                    Your Name
+                  </label>
                   <input
                     type="text"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                     placeholder="John Doe"
@@ -256,11 +283,15 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm text-white/70 mb-2">Your Email</label>
+                  <label className="block text-sm text-white/70 mb-2">
+                    Your Email
+                  </label>
                   <input
                     type="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all"
                     placeholder="john@example.com"
@@ -268,10 +299,14 @@ const Contact = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm text-white/70 mb-2">Your Message</label>
+                  <label className="block text-sm text-white/70 mb-2">
+                    Your Message
+                  </label>
                   <textarea
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     required
                     rows={5}
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-white/30 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none"
