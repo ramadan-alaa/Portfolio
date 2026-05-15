@@ -1,148 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
-
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  image: string;
-  tech: string[];
-  liveUrl: string;
-  githubUrl: string;
-}
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: 'Taskify – Collaborative Task Management Platform',
-    category: 'Web Design',
-    description: 'Built a Kanban-style task management app using React and TypeScript.',
-    image: '/images/project-taskify.png',
-    tech: ['React', 'Tailwind', 'TypeScript'],
-    liveUrl: 'https://taskify-five-ecru.vercel.app/dashboard',
-    githubUrl: '#',
-  },
-  {
-    id: 2,
-    title: 'Apple Web',
-    category: 'Web Design',
-    description: 'Developed a responsive web application using React.js and Tailwind CSS, with smooth and interactive animations powered by GSAP and 3JS.',
-    image: '/images/project-apple-web.png',
-    tech: ['React', 'Tailwind', 'GSAP', '3JS'],
-    liveUrl: 'https://ramadan-alaa.github.io/Apple-web/',
-    githubUrl: '#',
-  },
-  {
-    id: 3,
-    title: 'Zenvy',
-    category: 'E-commerce',
-    description: 'Built a scalable e-commerce web application using React and TypeScript, featuring full customer workflows (product browsing, filtering, cart, checkout, and order tracking) alongside an admin dashboard for managingproducts, orders, and customers.',
-    image: '/images/project-zenvy.png',
-    tech: ['React', 'TypeScript', 'Tailwind'],
-    liveUrl: 'https://zenvy-omega.vercel.app/',
-    githubUrl: '#',
-  },
-  {
-    id: 4,
-    title: 'Flow State – Productivity Dashboard',
-    category: 'Development',
-    description: 'Built a productivity dashboard combining task management, habit tracking, and Pomodoro timer.',
-    image: '/images/project-flow-state.png',
-    tech: ['React', 'TypeScript', 'Tailwind'],
-    liveUrl: 'https://flow-state-lemon.vercel.app/',
-    githubUrl: '#',
-  },
-];
-
-const ProjectCard = ({ project, index, isVisible }: { project: Project; index: number; isVisible: boolean }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <div
-      className={`group relative transition-all duration-700 ${
-        isVisible
-          ? 'translate-y-0 opacity-100 scale-100'
-          : 'translate-y-12 opacity-0 scale-95'
-      }`}
-      style={{
-        transitionDelay: `${index * 150 + 300}ms`,
-        transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="relative overflow-hidden rounded-3xl bg-dark-surface transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl">
-        {/* Image */}
-        <div className="relative h-64 overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className={`w-full h-full object-cover transition-transform duration-700 ${
-              isHovered ? 'scale-110' : 'scale-100'
-            }`}
-          />
-          
-          {/* Overlay */}
-          <div
-            className={`absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent transition-opacity duration-500 ${
-              isHovered ? 'opacity-90' : 'opacity-60'
-            }`}
-          />
-
-          {/* Category Badge */}
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1.5 bg-primary/80 backdrop-blur-sm text-white text-xs font-medium rounded-full">
-              {project.category}
-            </span>
-          </div>
-
-          {/* Hover Actions */}
-          <div
-            className={`absolute inset-0 flex items-center justify-center gap-4 transition-all duration-500 ${
-              isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            <a
-              href={project.liveUrl}
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
-            >
-              <ExternalLink size={20} />
-            </a>
-            <a
-              href={project.githubUrl}
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
-            >
-              <Github size={20} />
-            </a>
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-6">
-          <h3 className="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
-            {project.title}
-          </h3>
-          <p className="text-white/60 text-sm mb-4 line-clamp-2">
-            {project.description}
-          </p>
-          
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-2">
-            {project.tech.map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1 bg-white/5 text-white/70 text-xs rounded-full"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import ProjectCard from "../components/ProjectCard";
+import { projects } from "../data/projects";
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -155,7 +15,7 @@ const Projects = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -183,25 +43,37 @@ const Projects = () => {
           <div>
             <span
               className={`section-label transition-all duration-500 ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-4 opacity-0"
               }`}
             >
               Portfolio
             </span>
             <h2
               className={`text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white mt-4 transition-all duration-600 ${
-                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+                isVisible
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-8 opacity-0"
               }`}
-              style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+              style={{
+                transitionDelay: "100ms",
+                transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
             >
               Featured <span className="gradient-text">Projects</span>
             </h2>
           </div>
           <p
             className={`text-white/60 max-w-md mt-4 lg:mt-0 transition-all duration-600 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
             }`}
-            style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+            style={{
+              transitionDelay: "200ms",
+              transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
           >
             A selection of my recent work, showcasing my skills in design,
             development, and problem-solving.
@@ -210,11 +82,8 @@ const Projects = () => {
 
         {/* Projects Grid - Masonry Style */}
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className={index % 2 === 1 ? 'md:mt-12' : ''}
-            >
+          {projects.slice(0, 4).map((project, index) => (
+            <div key={project.id} className={index % 2 === 1 ? "md:mt-12" : ""}>
               <ProjectCard
                 project={project}
                 index={index}
@@ -227,12 +96,17 @@ const Projects = () => {
         {/* View All Button */}
         <div
           className={`text-center mt-16 transition-all duration-500 ${
-            isVisible ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-8 opacity-0 scale-90'
+            isVisible
+              ? "translate-y-0 opacity-100 scale-100"
+              : "translate-y-8 opacity-0 scale-90"
           }`}
-          style={{ transitionDelay: '900ms', transitionTimingFunction: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)' }}
+          style={{
+            transitionDelay: "900ms",
+            transitionTimingFunction: "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+          }}
         >
-          <a
-            href="#"
+          <Link
+            to="/projects"
             className="btn-outline inline-flex items-center gap-2 group"
           >
             View All Projects
@@ -240,7 +114,7 @@ const Projects = () => {
               size={18}
               className="group-hover:translate-x-1 transition-transform"
             />
-          </a>
+          </Link>
         </div>
       </div>
     </section>
