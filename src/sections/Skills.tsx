@@ -1,79 +1,75 @@
-import { useEffect, useRef, useState } from 'react';
-import { 
-  Code2, 
-  Palette, 
-  Layout, 
-  Database, 
-  GitBranch, 
+import { useEffect, useRef, useState } from "react";
+import {
+  Code2,
+  Palette,
+  Layout,
+  Database,
+  GitBranch,
   Terminal,
   Smartphone,
-  Zap
-} from 'lucide-react';
+  Zap,
+} from "lucide-react";
 
 interface Skill {
   name: string;
   icon: React.ElementType;
-  level: number;
   color: string;
 }
 
 const skillCategories = [
   {
-    title: 'Frontend Core',
+    title: "Frontend Core",
     skills: [
-      { name: 'HTML5', icon: Code2, level: 95, color: '#e34c26' },
-      { name: 'CSS3', icon: Palette, level: 92, color: '#264de4' },
-      { name: 'JavaScript', icon: Terminal, level: 90, color: '#f7df1e' },
+      { name: "HTML5", icon: Code2, color: "#e34c26" },
+      { name: "CSS3", icon: Palette, color: "#264de4" },
+      { name: "JavaScript", icon: Terminal, color: "#f7df1e" },
     ],
   },
   {
-    title: 'Frameworks & Libraries',
+    title: "Frameworks & Libraries",
     skills: [
-      { name: 'React', icon: Zap, level: 88, color: '#61dafb' },
-      { name: 'TypeScript', icon: Code2, level: 85, color: '#3178c6' },
-      { name: 'Tailwind CSS', icon: Layout, level: 95, color: '#06b6d4' },
+      { name: "React", icon: Zap, color: "#61dafb" },
+      { name: "TypeScript", icon: Code2, color: "#3178c6" },
+      { name: "Tailwind CSS", icon: Layout, color: "#06b6d4" },
     ],
   },
   {
-    title: 'Tools & More',
+    title: "Tools & More",
     skills: [
-      { name: 'Sass/SCSS', icon: Palette, level: 95, color: '#cc6699' },
-      { name: 'Bootstrap', icon: Layout, level: 92, color: '#7952b3' },
-      { name: 'Git', icon: GitBranch, level: 95, color: '#f05032' },
+      { name: "Sass/SCSS", icon: Palette, color: "#cc6699" },
+      { name: "Bootstrap", icon: Layout, color: "#7952b3" },
+      { name: "Git", icon: GitBranch, color: "#f05032" },
     ],
   },
   {
-    title: 'API & Data',
+    title: "API & Data",
     skills: [
-      { name: 'REST APIs', icon: Database, level: 88, color: '#4ade80' },
-      { name: 'Axios', icon: Zap, level: 88, color: '#5a29e4' },
-      { name: 'Responsive', icon: Smartphone, level: 95, color: '#8751ff' },
+      { name: "REST APIs", icon: Database, color: "#4ade80" },
+      { name: "Axios", icon: Zap, color: "#5a29e4" },
+      { name: "Responsive", icon: Smartphone, color: "#8751ff" },
     ],
   },
 ];
 
-const SkillCard = ({ skill, index, isVisible }: { skill: Skill; index: number; isVisible: boolean }) => {
-  const [animatedLevel, setAnimatedLevel] = useState(0);
-
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => {
-        setAnimatedLevel(skill.level);
-      }, index * 150 + 300);
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible, skill.level, index]);
-
+const SkillCard = ({
+  skill,
+  index,
+  isVisible,
+}: {
+  skill: Skill;
+  index: number;
+  isVisible: boolean;
+}) => {
   return (
     <div
       className={`relative group transition-all duration-700 ${
         isVisible
-          ? 'translate-y-0 opacity-100 rotate-x-0'
-          : 'translate-y-12 opacity-0'
+          ? "translate-y-0 opacity-100 rotate-x-0"
+          : "translate-y-12 opacity-0"
       }`}
       style={{
         transitionDelay: `${index * 100}ms`,
-        transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)',
+        transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
       }}
     >
       <div className="relative glass rounded-2xl p-5 overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-glow group-hover:border-primary/50">
@@ -83,7 +79,7 @@ const SkillCard = ({ skill, index, isVisible }: { skill: Skill; index: number; i
             className="absolute inset-[-2px] rounded-2xl animate-border-rotate"
             style={{
               background: `linear-gradient(90deg, ${skill.color}, #8751ff, ${skill.color})`,
-              backgroundSize: '200% 100%',
+              backgroundSize: "200% 100%",
               zIndex: -1,
             }}
           />
@@ -101,26 +97,6 @@ const SkillCard = ({ skill, index, isVisible }: { skill: Skill; index: number; i
 
           {/* Name */}
           <h4 className="text-white font-semibold mb-3">{skill.name}</h4>
-
-          {/* Progress Bar */}
-          <div className="relative h-2 bg-white/10 rounded-full overflow-hidden">
-            <div
-              className="absolute inset-y-0 left-0 rounded-full transition-all duration-1000 ease-out"
-              style={{
-                width: `${animatedLevel}%`,
-                backgroundColor: skill.color,
-                boxShadow: `0 0 10px ${skill.color}50`,
-              }}
-            />
-          </div>
-
-          {/* Level */}
-          <div className="flex justify-between mt-2">
-            <span className="text-xs text-white/50">Proficiency</span>
-            <span className="text-xs font-medium" style={{ color: skill.color }}>
-              {animatedLevel}%
-            </span>
-          </div>
         </div>
       </div>
     </div>
@@ -138,7 +114,7 @@ const Skills = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -164,27 +140,40 @@ const Skills = () => {
         <div className="text-center mb-16">
           <span
             className={`section-label transition-all duration-500 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-4 opacity-0"
             }`}
           >
             My Skills
           </span>
           <h2
             className={`text-4xl sm:text-5xl lg:text-6xl font-display font-bold text-white mt-4 transition-all duration-600 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
             }`}
-            style={{ transitionDelay: '100ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+            style={{
+              transitionDelay: "100ms",
+              transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
           >
             Technologies I <span className="gradient-text">Work With</span>
           </h2>
           <p
             className={`text-white/60 max-w-2xl mx-auto mt-4 transition-all duration-600 ${
-              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              isVisible
+                ? "translate-y-0 opacity-100"
+                : "translate-y-8 opacity-0"
             }`}
-            style={{ transitionDelay: '200ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+            style={{
+              transitionDelay: "200ms",
+              transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
           >
-            I've worked with a variety of technologies in the web development world.
-            Here are the main tools and frameworks I use to bring ideas to life.
+            I've worked with a variety of technologies in the web development
+            world. Here are the main tools and frameworks I use to bring ideas
+            to life.
           </p>
         </div>
 
@@ -194,7 +183,9 @@ const Skills = () => {
             <div key={category.title}>
               <h3
                 className={`text-xl font-semibold text-white mb-6 transition-all duration-500 ${
-                  isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
+                  isVisible
+                    ? "translate-x-0 opacity-100"
+                    : "-translate-x-8 opacity-0"
                 }`}
                 style={{ transitionDelay: `${categoryIndex * 100 + 300}ms` }}
               >
@@ -217,17 +208,20 @@ const Skills = () => {
         {/* Additional Info */}
         <div
           className={`mt-16 glass rounded-3xl p-8 text-center transition-all duration-700 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
           }`}
-          style={{ transitionDelay: '800ms', transitionTimingFunction: 'cubic-bezier(0.16, 1, 0.3, 1)' }}
+          style={{
+            transitionDelay: "800ms",
+            transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
         >
           <h3 className="text-2xl font-display font-bold text-white mb-4">
             Always Learning
           </h3>
           <p className="text-white/60 max-w-2xl mx-auto">
-            Technology evolves rapidly, and I'm committed to staying at the forefront.
-            Currently exploring Next.js, Three.js, and advanced animation techniques
-            to create even more immersive web experiences.
+            Technology evolves rapidly, and I'm committed to staying at the
+            forefront. Currently exploring Next.js, Three.js, and advanced
+            animation techniques to create even more immersive web experiences.
           </p>
         </div>
       </div>
