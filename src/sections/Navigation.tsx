@@ -1,32 +1,41 @@
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 100);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Blog', href: '#blog' },
-    { name: 'Contact', href: '#contact' },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Blog", href: "#blog" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
+    if (location.pathname !== "/") {
+      navigate(`/${href}`);
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMobileMenuOpen(false);
   };
@@ -35,8 +44,8 @@ const Navigation = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'backdrop-blur-xl bg-dark/80 border-b border-white/10'
-          : 'bg-transparent'
+          ? "backdrop-blur-xl bg-dark/80 border-b border-white/10"
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-[1340px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,10 +55,10 @@ const Navigation = () => {
             href="#home"
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection('#home');
+              scrollToSection("#home");
             }}
             className={`text-2xl font-display font-bold text-white transition-transform duration-300 ${
-              isScrolled ? 'scale-90' : 'scale-100'
+              isScrolled ? "scale-90" : "scale-100"
             }`}
           >
             Portfolio
@@ -79,7 +88,7 @@ const Navigation = () => {
               href="#contact"
               onClick={(e) => {
                 e.preventDefault();
-                scrollToSection('#contact');
+                scrollToSection("#contact");
               }}
               className="px-6 py-2.5 border border-primary text-white text-sm font-medium rounded-full hover:bg-primary hover:scale-105 transition-all duration-300 hover:shadow-glow"
             >
@@ -101,8 +110,8 @@ const Navigation = () => {
       <div
         className={`md:hidden absolute top-full left-0 right-0 backdrop-blur-xl bg-dark/95 border-b border-white/10 transition-all duration-300 ${
           isMobileMenuOpen
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 -translate-y-4 pointer-events-none'
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
         <div className="px-4 py-6 space-y-4">
@@ -123,7 +132,7 @@ const Navigation = () => {
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
-              scrollToSection('#contact');
+              scrollToSection("#contact");
             }}
             className="block w-full text-center px-6 py-3 bg-primary text-white font-medium rounded-full mt-4"
           >
