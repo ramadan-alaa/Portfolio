@@ -65,4 +65,15 @@ export const projects: Project[] = [
     liveUrl: "https://shopix-iota.vercel.app/",
     githubUrl: "#",
   },
+  {
+    id: 6,
+    title: "Velta",
+    category: "Development",
+    description:
+      "Developed a modern and fully responsive web application with a clean UI/UX, interactive components, smooth animations, and optimized performance. Focused on scalable frontend architecture, reusable components, and seamless user experience across all devices.",
+    image: "/images/project-velta.png",
+    tech: ["React", "TypeScript", "Tailwind", "Redux Toolkit", "React Query"],
+    liveUrl: "https://velta-gray.vercel.app/",
+    githubUrl: "#",
+  },
 ];
