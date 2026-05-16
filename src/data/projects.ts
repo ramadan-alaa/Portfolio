@@ -19,7 +19,7 @@ export const projects: Project[] = [
     image: "/images/project-taskify.png",
     tech: ["React", "Tailwind", "TypeScript"],
     liveUrl: "https://taskify-five-ecru.vercel.app/dashboard",
-    githubUrl: "#",
+    githubUrl: "https://github.com/ramadan-alaa",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ export const projects: Project[] = [
     image: "/images/project-apple-web.png",
     tech: ["React", "Tailwind", "GSAP", "3JS"],
     liveUrl: "https://ramadan-alaa.github.io/Apple-web/",
-    githubUrl: "#",
+    githubUrl: "https://github.com/ramadan-alaa",
   },
   {
     id: 3,
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     image: "/images/project-zenvy.png",
     tech: ["React", "TypeScript", "Tailwind"],
     liveUrl: "https://zenvy-omega.vercel.app/",
-    githubUrl: "#",
+    githubUrl: "https://github.com/ramadan-alaa",
   },
   {
     id: 4,
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     image: "/images/project-flow-state.png",
     tech: ["React", "TypeScript", "Tailwind"],
     liveUrl: "https://flow-state-lemon.vercel.app/",
-    githubUrl: "#",
+    githubUrl: "https://github.com/ramadan-alaa",
   },
   {
     id: 5,
@@ -63,7 +63,7 @@ export const projects: Project[] = [
     image: "/images/project-shopix.png",
     tech: ["React", "TypeScript", "Tailwind"],
     liveUrl: "https://shopix-iota.vercel.app/",
-    githubUrl: "#",
+    githubUrl: "https://github.com/ramadan-alaa",
   },
   {
     id: 6,
@@ -74,6 +74,6 @@ export const projects: Project[] = [
     image: "/images/project-velta.png",
     tech: ["React", "TypeScript", "Tailwind", "Redux Toolkit", "React Query"],
     liveUrl: "https://velta-gray.vercel.app/",
-    githubUrl: "#",
+    githubUrl: "https://github.com/ramadan-alaa",
   },
 ];
