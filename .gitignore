@@ -1,4 +1,6 @@
 node_modules/
 dist/
 build/
-.envgit rm -r --cached node_modules
+.env
+.env.local
+.env.*.local
