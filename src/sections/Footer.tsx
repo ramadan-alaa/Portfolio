@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Linkedin, Github, Instagram, ArrowUp } from "lucide-react";
+import { Linkedin, Github, Instagram } from "lucide-react";
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
@@ -21,10 +21,6 @@ const Footer = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   const quickLinks = [
     { name: "Home", href: "#home" },
@@ -254,20 +250,6 @@ const Footer = () => {
                 Terms of Service
               </a>
             </div>
-
-            {/* Back to Top */}
-            <button
-              onClick={scrollToTop}
-              className={`w-10 h-10 glass rounded-lg flex items-center justify-center text-white/60 hover:text-primary hover:bg-primary/20 transition-all duration-300 hover:-translate-y-1 ${
-                isVisible
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-4 opacity-0"
-              }`}
-              style={{ transitionDelay: "1000ms" }}
-              aria-label="Back to top"
-            >
-              <ArrowUp className="w-4 h-4" />
-            </button>
           </div>
         </div>
       </div>

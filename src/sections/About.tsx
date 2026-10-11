@@ -49,18 +49,18 @@ const About = () => {
   const skills = [
     {
       icon: Code2,
-      label: "Clean Code",
-      desc: "Writing maintainable, scalable code",
+      label: "React & Next.js",
+      desc: "Production SSR, SSG & SPA architecture",
     },
     {
       icon: Palette,
-      label: "UI/UX Design",
-      desc: "Creating beautiful interfaces",
+      label: "UI/UX & Tailwind",
+      desc: "Pixel-perfect, accessible design systems",
     },
     {
       icon: Globe,
-      label: "Web Performance",
-      desc: "Optimizing for speed & SEO",
+      label: "Performance & SEO",
+      desc: "High Lighthouse scores & optimization",
     },
   ];
 
@@ -170,22 +170,19 @@ const About = () => {
               }}
             >
               <p>
-                I'm a passionate Front-End Developer with strong experience in
-                building modern, responsive, and scalable web applications.
-                Skilled in HTML, CSS, JavaScript, React, and TypeScript, with
-                hands-on experience integrating RESTful APIs using Axios.
-                Experienced in developing and customizing e-commerce themes on
-                the Salla, Zid platform using Twig templating, along with
-                Tailwind, Bootstrap, and SASS. Proficient in Git/GitHub,
-                performance optimization, and building reusable, component-based
-                UI. Passionate about delivering clean, user-friendly, and
-                high-performance interfaces.
+                I'm a passionate Front-End Developer with 3+ years of experience in
+                building modern, responsive, and scalable web applications specializing in{" "}
+                <span className="text-white font-semibold">React.js</span> and{" "}
+                <span className="text-white font-semibold">Next.js</span>. Skilled in TypeScript,
+                JavaScript (ES6+), and modern state management with Redux Toolkit and Zustand,
+                with hands-on experience integrating robust RESTful APIs using Axios.
               </p>
               <p>
-                I specialize in React, TypeScript, and modern CSS frameworks
-                like Tailwind. I believe in writing clean, maintainable code and
-                creating interfaces that not only look great but also provide
-                exceptional user experiences.
+                Experienced in developing and customizing high-conversion e-commerce themes on
+                platforms like Salla and Zid using Twig templating, alongside Tailwind CSS,
+                Bootstrap, and SASS. Proficient in Next.js App Router, SSR/SSG, Git/GitHub,
+                performance optimization, and component-driven UI architecture. Passionate about
+                delivering clean, accessible, and high-performance digital products.
               </p>
             </div>
 

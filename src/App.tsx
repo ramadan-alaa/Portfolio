@@ -4,10 +4,12 @@ import Navigation from "./sections/Navigation";
 import Footer from "./sections/Footer";
 import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <div className="min-h-screen bg-dark text-white overflow-x-hidden">
+      <ScrollToTop />
       {/* Toast notifications */}
       <Toaster
         position="top-right"

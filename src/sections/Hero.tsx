@@ -205,9 +205,9 @@ const Hero = () => {
                 transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
               }}
             >
-              Frontend Developer dedicated to building high-quality, scalable
-              web applications with modern technologies, clean code practices,
-              and exceptional user experience.
+              React.js & Next.js Frontend Developer with 3+ years of experience
+              building high-performance, scalable web applications with modern
+              component architecture, clean code practices, and exceptional UX.
             </p>
 
             {/* CTA Buttons */}
@@ -319,15 +319,18 @@ const Hero = () => {
 
                 {/* Tech Stack Badge */}
                 <div
-                  className="absolute -top-4 -right-4 glass px-4 py-3 rounded-2xl animate-float"
+                  className="absolute -top-4 -right-4 glass px-3.5 py-2.5 rounded-2xl animate-float"
                   style={{ animationDelay: "1s" }}
                 >
-                  <div className="flex gap-2">
-                    <span className="text-xs px-2 py-1 bg-primary/20 rounded-full text-primary">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xs font-semibold px-2.5 py-1 bg-primary/20 border border-primary/30 rounded-full text-primary">
                       React
                     </span>
-                    <span className="text-xs px-2 py-1 bg-primary/20 rounded-full text-primary">
-                      TS
+                    <span className="text-xs font-semibold px-2.5 py-1 bg-white/10 border border-white/20 rounded-full text-white">
+                      Next.js
+                    </span>
+                    <span className="text-xs font-semibold px-2.5 py-1 bg-primary/20 border border-primary/30 rounded-full text-primary">
+                      TypeScript
                     </span>
                   </div>
                 </div>
