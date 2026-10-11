@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { ExternalLink, Github } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import type { Project } from "../data/projects";
 
 interface ProjectCardProps {
@@ -25,8 +26,12 @@ const ProjectCard = ({ project, index, isVisible }: ProjectCardProps) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative overflow-hidden rounded-3xl bg-dark-surface transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl">
-        <div className="relative h-64 overflow-hidden">
+      <div className="relative overflow-hidden rounded-3xl bg-dark-surface border border-white/5 transition-all duration-500 hover:-translate-y-3 hover:border-primary/40 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)]">
+        {/* Clickable Card Link for Image */}
+        <Link
+          to={`/projects/${project.id}`}
+          className="block relative h-64 overflow-hidden cursor-pointer"
+        >
           <img
             src={project.image}
             alt={project.title}
@@ -36,44 +41,71 @@ const ProjectCard = ({ project, index, isVisible }: ProjectCardProps) => {
           />
 
           <div
-            className={`absolute inset-0 bg-gradient-to-t from-dark via-dark/50 to-transparent transition-opacity duration-500 ${
+            className={`absolute inset-0 bg-gradient-to-t from-dark via-dark/40 to-transparent transition-opacity duration-500 ${
               isHovered ? "opacity-90" : "opacity-60"
             }`}
           />
 
-          <div className="absolute top-4 left-4">
-            <span className="px-3 py-1.5 bg-primary/80 backdrop-blur-sm text-white text-xs font-medium rounded-full">
+          {/* Category Badge */}
+          <div className="absolute top-4 left-4 z-10">
+            <span className="px-3 py-1.5 bg-primary/80 backdrop-blur-md text-white text-xs font-semibold rounded-full border border-primary/30 shadow-sm">
               {project.category}
             </span>
           </div>
 
+          {/* Hover Actions Bar */}
           <div
-            className={`absolute inset-0 flex items-center justify-center gap-4 transition-all duration-500 ${
+            className={`absolute inset-0 z-20 flex items-center justify-center gap-3 transition-all duration-500 ${
               isHovered
                 ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-4"
+                : "opacity-0 translate-y-4 pointer-events-none"
             }`}
           >
+            {/* View Project Details Button */}
+            <span className="px-4 py-2.5 bg-primary text-white rounded-full flex items-center gap-1.5 text-xs font-semibold shadow-glow hover:scale-105 transition-all">
+              <span>View Details</span>
+              <ArrowUpRight size={16} />
+            </span>
+
+            {/* Live Demo External */}
             <a
               href={project.liveUrl}
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-primary transition-all hover:scale-110"
+              title="Live Demo"
             >
-              <ExternalLink size={20} />
+              <ExternalLink size={18} />
             </a>
+
+            {/* GitHub Repo External */}
             <a
               href={project.githubUrl}
-              className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-white hover:bg-primary transition-all hover:scale-110"
+              title="Source Code"
             >
-              <Github size={20} />
+              <Github size={18} />
             </a>
           </div>
-        </div>
+        </Link>
 
+        {/* Content Section */}
         <div className="p-6">
-          <h3 className="text-xl font-display font-bold text-white mb-2 group-hover:text-primary transition-colors">
-            {project.title}
-          </h3>
-          <p className="text-white/60 text-sm mb-4 line-clamp-2">
+          <Link to={`/projects/${project.id}`} className="block group/title">
+            <h3 className="text-xl font-display font-bold text-white mb-2 group-hover/title:text-primary transition-colors flex items-center justify-between">
+              <span className="line-clamp-1">{project.title}</span>
+              <ArrowUpRight
+                size={18}
+                className="opacity-0 group-hover/title:opacity-100 -translate-x-2 group-hover/title:translate-x-0 transition-all text-primary shrink-0 ml-2"
+              />
+            </h3>
+          </Link>
+
+          <p className="text-white/60 text-sm mb-5 line-clamp-2 leading-relaxed">
             {project.description}
           </p>
 
@@ -81,7 +113,7 @@ const ProjectCard = ({ project, index, isVisible }: ProjectCardProps) => {
             {project.tech.map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1 bg-white/5 text-white/70 text-xs rounded-full"
+                className="px-3 py-1 bg-white/[0.04] text-white/70 text-xs font-medium rounded-full border border-white/5"
               >
                 {tech}
               </span>
