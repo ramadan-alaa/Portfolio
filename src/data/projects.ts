@@ -175,6 +175,74 @@ export const projects: Project[] = [
   },
   {
     id: 4,
+    slug: "dinaro",
+    title: "Dinaro – Personal Wealth & Finance Management Platform",
+    subtitle:
+      "A high-performance, feature-driven personal wealth & finance management platform built with Next.js 15, React 19, and TypeScript.",
+    category: "FinTech & Wealth Management",
+    description:
+      "Architected a scalable personal finance platform featuring real-time multi-wallet ledger calculations, predictive forecasting, and a zero-mock computational engine.",
+    overview:
+      "Dinaro is a modern, responsive personal finance platform engineered with Next.js 15 (App Router), React 19, and TypeScript. Unlike typical finance templates that rely on static mock data, Dinaro operates on a pure computational engine that calculates real-time balances, multi-currency flows, debt amortization, and multi-year financial forecasts. Built with a clean feature-based modular architecture and reactive server-state caching via TanStack Query v5, Dinaro delivers zero-latency state synchronization across wallets, budgets, analytics, and debt management.",
+    role: "Frontend / Full-Stack Developer",
+    timeline: "4 Weeks",
+    image: "/images/project-Dinaro.png",
+    tech: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "TanStack Query",
+      "Tailwind CSS",
+      "Recharts",
+      "Zod",
+      "Framer Motion",
+      "Radix UI",
+    ],
+    features: [
+      {
+        title: "Autonomous Wallet & Ledger Engine",
+        description:
+          "Derives real-time balances across asset accounts (Cash, Bank, Savings) and liability accounts (Credit Cards) with dynamic balance derivation and automated debt repayment logic.",
+      },
+      {
+        title: "Predictive Wealth Forecasting & Simulation",
+        description:
+          "Simulates financial projections up to 5 years with pure mathematical functions modeling compound interest, inflation adjustments, and annual salary progression.",
+      },
+      {
+        title: "Reactive State & Cache Synchronization",
+        description:
+          "TanStack Query v5 server-state management guarantees instant UI synchronization across dashboards, wallets, budgets, and transactions through mutation invalidation.",
+      },
+      {
+        title: "Interactive Financial Visualizations",
+        description:
+          "Dynamic Recharts analytics illustrating cash flow trends, expense breakdowns by category, and payment channel distribution (InstaPay, Vodafone Cash, etc.).",
+      },
+      {
+        title: "Enterprise Form Validation & Clean Architecture",
+        description:
+          "Seamless form handling powered by React Hook Form paired with strict Zod schema validation and a decoupled storage service abstraction layer.",
+      },
+    ],
+    challenges: [
+      "Deriving consistent real-time balances across complex multi-wallet transfers and credit card debt repayments without double-counting or data inconsistencies.",
+      "Running real-time multi-year compound interest and cash flow simulations on keystroke input without inducing UI lag or frame drops.",
+    ],
+    solutions: [
+      "Designed a single-source-of-truth mathematical ledger engine deriving balances deterministically from opening balances, transactions, and transfer differentials.",
+      "Utilized memoized pure calculation algorithms combined with TanStack Query cache key invalidation, achieving instantaneous updates under 16ms.",
+    ],
+    metrics: [
+      { label: "Mock Data", value: "Zero (Pure Engine)" },
+      { label: "Forecast Horizon", value: "Up to 5 Years" },
+      { label: "Calculation Latency", value: "< 16ms" },
+    ],
+    liveUrl: "https://dinaro-one.vercel.app/",
+    githubUrl: "https://github.com/ramadan-alaa",
+  },
+  {
+    id: 5,
     slug: "flow-state",
     title: "Flow State – Productivity & Focus Dashboard",
     subtitle: "All-in-one productivity hub integrating Pomodoro timer, habit tracking, and tasks.",
@@ -222,7 +290,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ramadan-alaa",
   },
   {
-    id: 5,
+    id: 6,
     slug: "shopix",
     title: "Shopix – Fashion E-Commerce Storefront",
     subtitle: "Modern, high-conversion apparel storefront designed for fluid browsing and speed.",
@@ -270,7 +338,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/ramadan-alaa",
   },
   {
-    id: 6,
+    id: 7,
     slug: "velta",
     title: "Velta – Modern Web Application & SaaS Platform",
     subtitle: "Enterprise-grade web application featuring Redux Toolkit, React Query, and modular UI.",
